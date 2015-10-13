@@ -5,11 +5,22 @@ import java.util.List;
 
 /**
  * 
+ * Data Access Object (DAO) is an object that provides an abstract interface to some type of database or other 
+ * persistence mechanism. By mapping application calls to the persistence layer, DAO provide some specific data 
+ * operations without exposing details of the database. This isolation supports the Single responsibility principle. 
+ * It separates what data accesses the application needs, in terms of domain-specific objects and data types 
+ * (the public interface of the DAO), from how these needs can be satisfied with a specific DBMS.
+ * <p>
  * With the DAO pattern, we can use various method calls to retrieve/add/delete/update data without directly
- * interacting with the data. The below example demonstrates basic operations(CRUD): select, add, update, and delete.
+ * interacting with the data. The below example demonstrates basic CRUD operations: select, add, update, and delete.
+ * 
  */
 public class App {
 
+	/**
+	 * Program entry point
+	 * @param args command line args
+	 */
 	public static void main(String[] args) {
 
 		CustomerDaoImpl customerDao = new CustomerDaoImpl(generateSampleCustomers());
@@ -33,6 +44,10 @@ public class App {
 		System.out.println("customerDao.getAllCustomers(): " + customerDao.getAllCustomers());
 	}
 
+	/**
+	 * Generate customers
+	 * @return list of customers
+	 */
 	public static List<Customer> generateSampleCustomers() {
 		Customer customer1 = new Customer(1, "Adam", "Adamson");
 		Customer customer2 = new Customer(2, "Bob", "Bobson");
